@@ -1,2 +1,3 @@
 .env
-node*
+node_modules
+Data_Collection/.cache

@@ -1,0 +1,185 @@
+body {
+    /* background: url("/images/bg2.png");
+    background-size: 100% auto;
+    background-repeat: round;
+    background-attachment: repeat; */
+    /* opacity: 0.5; */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: #eaf5ea;
+    /* color: rgb(255, 255, 255); */
+}
+.bg-color{
+    background-color: #eaf5ea !important;
+}
+.border {
+    border-width: 3px !important;
+}
+
+#link {
+    text-decoration: none;
+}
+
+.lead {
+    font-size: 1.2em;
+    font-weight: 400;
+    font-family: "Roboto", sans-serif;
+}
+
+#footer {
+    margin-top: auto;
+    width: 100%;
+    padding: 15px 0px 0px 15px;
+    height: 90px;
+    display: block;
+    border-top: 3px solid black;
+}
+
+.social {
+    display: flex;
+}
+
+.dropdown-menu {
+    border: none;
+}
+
+.blank {
+    height: 50px;
+}
+
+#listItems {
+    border-bottom: 2px solid #b5dffa;
+}
+
+#song-album {
+    font-size: 1.2rem;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    /* border-bottom: 2px solid #5e86a1; */
+    padding: 0px;
+    margin: 0px;
+}
+
+#details {
+    line-height: 0.7;
+    margin: none;
+    padding: 0px;
+}
+#detailed-view{
+font-size: 1.3rem;
+}
+#song-artist{
+    font-weight: 500;
+    padding: 0px;
+    margin: 0px;
+    font-size:1.3rem;
+}
+
+#audio{
+    /* background-color:black; */
+    width: 100%;
+    height:40px;
+}
+.dropdown-menu li {
+    position: relative;
+}
+
+.dropdown-menu .dropdown-submenu {
+    display: none;
+    position: absolute;
+    left: 100%;
+    top: -7px;
+}
+
+.dropdown-menu .dropdown-submenu-left {
+    right: 100%;
+    left: auto;
+}
+
+.dropdown-menu>li:hover>.dropdown-submenu {
+    display: block;
+}
+
+@media (max-width: 1050px) {
+    #series {
+        font-size: 0.9rem;
+    }
+    /* .dropdown-menu .dropdown-submenu {
+        left: 10%;
+    }
+
+    .dropdown-menu .dropdown-submenu-left {
+        right: 10%;
+    } */
+}
+@media (max-width: 992px) {
+    .dropdown-menu .dropdown-submenu {
+            left: 15%;
+        }
+    
+        .dropdown-menu .dropdown-submenu-left {
+            right: 15%;
+        }
+}
+@media (max-width: 766px) {
+    #series {
+        font-size: 1rem;
+    }
+
+    #bookName {
+        font-size: 1.2rem;
+    }
+
+    #listItems {
+        border-bottom: none;
+    }
+
+    #details {
+        border-top: 2px solid #b5dffa;
+        border-bottom: 2px solid #b5dffa;
+        padding-top: 18px;
+        margin-top: 15px;
+        font-size: 1rem;
+    }
+    #detailed-view {
+            font-size: 1.2rem;
+    }
+
+    .dropdown-menu .dropdown-submenu {
+        left: 20%;
+    }
+    .dropdown-menu .dropdown-submenu-left {
+        right: 20%;
+    }
+
+    .carousel-item {
+        height: 600px;
+    }
+}
+@media (max-width: 520px) {
+    #series {
+        font-size: 0.8rem;
+    }
+
+    #bookName {
+        font-size: 1rem;
+    }
+
+    #listItems {
+        border-bottom: none;
+    }
+
+    .heading {
+        font-size: 2rem;
+    }
+        .dropdown-menu .dropdown-submenu {
+            left: 30%;
+        }
+    
+        .dropdown-menu .dropdown-submenu-left {
+            right: 30%;
+        }
+        .carousel-item {
+            height: 500px;
+        }
+}

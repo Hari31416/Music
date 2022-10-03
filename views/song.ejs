@@ -1,0 +1,50 @@
+<!-- THE HAED -->
+<%- include('partials/head', {title})%>
+    <!-- THE NAV -->
+    <%- include('partials/nav')%>
+        <!-- THE BODY -->
+        <div class="container">
+            <h2 class="text-center">
+                <%= song[0].Song_Name %>
+            </h2>
+            <div class="row">
+                <div class="col-sm-8 col-md-6 offset-sm-2 offset-md-3">
+                    <div class="card bg-transparent border-0">
+                        <img class="card-img-top" src="<%= song[0].Image_Url %>" alt="Card image cap">
+                        <div class="card-body text-center">
+                            <!-- <h5 class="card-title song-name">
+                                <%= song[0].Song_Name %>
+                            </h5> -->
+                            <p class="card-text">
+                                <span id="song-artist"> <i>by</i>
+                                    <a href="/artists/<%= song[0].Artist_ID %> ">
+                                        <%= song[0].Artist_Name %>
+                                    </a>
+                                </span><br>
+                                <span id="song-album"> <i>Album</i>
+                                    <a href="/albums/<%= song[0].Album_ID %> ">
+                                        <%= song[0].Album_Name %>
+                                    </a>
+                                </span>
+                                <br>
+                                <span><b>Duration</b>
+                                    <%= parseInt(song[0].Duration/1000) %> Second
+                                </span>
+                                <br>
+                                <span><b>Released On</b>
+                                    <%= song[0].Release_Date %>
+                                </span>
+                            </p>
+                            <p>Here is a Sample</p>
+                            <audio controls id="audio">
+                                <source src="<%= song[0].Preview_Url %> " type="audio/mpeg">
+                            </audio>
+                            <a target="_blank" href="<%= song[0].Spotify_Url %> ">Listen Full Song On Spotify</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- THE FOOTER -->
+        <%- include('partials/footer')%>

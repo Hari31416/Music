@@ -1,0 +1,30 @@
+<!-- THE HAED -->
+<%- include('partials/head', {title})%>
+    <!-- THE NAV -->
+    <%- include('partials/nav')%>
+        <!-- THE BODY -->
+        <!-- <div class="container"> -->
+        <div class="container">
+            <h2 class="">
+                Here are all the artists
+            </h2>
+            <div class="row">
+                <% for( let i=0; i < result.length; i++ ) { %>
+                    <div class="col-sm-6 col-md-4">
+                        <div class="card">
+                            <a href="/artists/<%= result[i].Artist_ID %>"><img class=" card-img-top"
+                                    src="<%= result[i].Image_Url %>" alt="Card image cap"> </a>
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <%= result[i].Name %>
+                                </h5>
+                                <a href="/artists/<%= result[i].Artist_ID %> ">Details</a>
+                            </div>
+                        </div>
+                    </div>
+                    <% } %>
+            </div>
+        </div>
+
+        <!-- THE FOOTER -->
+        <%- include('partials/footer')%>

@@ -1,0 +1,44 @@
+<!-- THE HAED -->
+<%- include('partials/head', {title})%>
+    <!-- THE NAV -->
+    <%- include('partials/nav')%>
+        <!-- THE BODY -->
+        <div class="container">
+
+            <div class="row align-items-center justify-content-center">
+                <div class="col-10 col-md-9 col-lg-8">
+                    <h1 class="text-center py-3">
+                        <%= result[0].Album_Name %>
+                    </h1>
+                    <div class="card bg-transparent">
+                        <img class=" card-img-top" src="<%= result[0].Image_Url %>" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                Album By <a href="/artists/<%= result[0].Artist_ID %> ">
+                                    <%= result[0].Artist_Name %>
+                                </a> <br>
+                                Published On <%= result[0].Release_Date %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-10 col-md-9 col-lg-8">
+                    <h2>Songs in the Album</h2>
+                    <% result.forEach(song=> { %>
+                        <li style="list-style-type: none;">
+                            <a href="/songs/<%= song.Song_ID %> ">
+                                <%= song.Name %>
+                            </a>
+                        </li>
+                        <li style="list-style-type: none;">
+                            Duration: <%= parseInt(song.Duration/1000) %> Seconds
+                        </li>
+                        <% }) %>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- THE FOOTER -->
+        <%- include('partials/footer')%>
