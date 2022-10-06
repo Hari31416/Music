@@ -1,11 +1,13 @@
 console.log("App.js Connected!");
 // const express = require("express");
-const mysql = require("mysql");
+const mysql = require("mysql2");
 
+require("dotenv").config();
+// console.log(process.env["AWSHOST"]);
 var con = mysql.createConnection({
-  host: "localhost",
-  user: "hari31416",
-  password: "HariSQL123",
+  host: `${process.env["AWSHOST"]}`,
+  user: `${process.env["AWSUSERNAME"]}`,
+  password: `${process.env["AWSPASSWORD"]}`,
   database: "music",
 });
 

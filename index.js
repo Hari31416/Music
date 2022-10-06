@@ -33,7 +33,7 @@ app.get("/songs", async (req, res) => {
     start: start,
     len: len,
   };
-  console.log(info);
+  // console.log(info);
   con.query(
     `SELECT s.Name as Song_Name, s.Song_ID, a.Image_Url, s.Preview_Url, a.Name as Album_Name, a.Album_ID, ar.Name as Artist_Name, ar.Artist_ID FROM songs as s INNER JOIN albums as a ON s.Album_ID = a.Album_ID INNER JOIN artists as ar ON s.Artist_ID = ar.Artist_ID ORDER BY RAND() LIMIT ${start}, ${len};`,
     function (err, result, fields) {
@@ -50,7 +50,7 @@ app.get("/songs/:id", async (req, res) => {
     function (err, result, fields) {
       if (err) throw err;
       title = result[0].Song_Name;
-      console.log(result);
+      // console.log(result);
       res.render("song", { title: title, song: result });
     }
   );
@@ -60,7 +60,7 @@ app.get("/artists", (req, res) => {
   const title = "All Artists";
   con.query("SELECT * FROM artists;", function (err, result, fields) {
     if (err) throw err;
-    console.log(result[0]);
+    // console.log(result[0]);
     res.render("artists", { title: title, result: result });
   });
 });
@@ -74,7 +74,7 @@ app.get("/artists/:id", (req, res) => {
       title = result[0].Artist_Name;
       // console.log(result);
       artistdetails = result;
-      console.log(artistdetails);
+      // console.log(artistdetails);
       res.render("artist", { title: title, artistdetails: artistdetails });
     }
   );
@@ -94,12 +94,12 @@ app.get("/albums", async (req, res) => {
     start: start,
     len: len,
   };
-  console.log(info);
+  // console.log(info);
   con.query(
     `SELECT *, al.Name as Album_Name, al.Image_Url, ar.Name as Artist_Name, al.Album_ID FROM albums as al INNER JOIN artists as ar ON al.Artist_ID = ar.Artist_ID WHERE al.Total_Tracks > 1 ORDER BY RAND() LIMIT ${start}, ${len};`,
     function (err, result, fields) {
       if (err) throw err;
-      console.log(result);
+      // console.log(result);
       res.render("albums", { title: title, result: result, info: info });
     }
   );
@@ -112,7 +112,7 @@ app.get("/albums/:id", async (req, res) => {
     function (err, result, fields) {
       if (err) throw err;
       title = result[0].Song_Name;
-      console.log(result);
+      // console.log(result);
       res.render("album", { title: title, result: result });
     }
   );
