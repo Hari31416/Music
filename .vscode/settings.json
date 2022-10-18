@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/4a7944ce-2ce6-473f-8250-2a0b38e97600/AppServices/subscriptions/4a7944ce-2ce6-473f-8250-2a0b38e97600/resourceGroups/appsvc_linux_centralus/providers/Microsoft.Web/sites/hari31416-music",
+    "appService.deploySubpath": "."
+}

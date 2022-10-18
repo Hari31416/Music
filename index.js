@@ -2,13 +2,10 @@ const express = require("express");
 const app = express();
 const path = require("path");
 const con = require("./connection");
+require("dotenv").config();
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "statics")));
-
-app.listen(3000, () => {
-  console.log("Server is running on port 3000");
-});
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
@@ -75,7 +72,21 @@ app.get("/artists/:id", (req, res) => {
       // console.log(result);
       artistdetails = result;
       // console.log(artistdetails);
-      res.render("artist", { title: title, artistdetails: artistdetails });
+      var genreRaw = String(result[0].Genre);
+      var genre = String(genreRaw.slice(1, genreRaw.length - 1));
+      genre = genre.split("'");
+      var finalGenre = [];
+      for (var i = 0; i < genre.length; i++) {
+        if (genre[i] != "" && genre[i].trim() != ",") {
+          finalGenre.push(genre[i]);
+        }
+      }
+      artistdetails[0].Genre = finalGenre;
+      // console.log(genreRaw, typeof genreRaw, genre, finalGenre);
+      res.render("artist", {
+        title: title,
+        artistdetails: artistdetails,
+      });
     }
   );
 });
@@ -111,7 +122,13 @@ app.get("/albums/:id", async (req, res) => {
     `SELECT *, al.Name as Album_Name, al.Image_Url, ar.Name as Artist_Name, al.Album_ID FROM albums as al INNER JOIN artists as ar ON al.Artist_ID = ar.Artist_ID INNER JOIN songs as s ON s.Album_ID = al.Album_ID WHERE al.Album_ID = '${Album_ID}';`,
     function (err, result, fields) {
       if (err) throw err;
-      title = result[0].Song_Name;
+
+      try {
+        title = result[0].Album_Name;
+      } catch (err) {
+        title = "Album Not Found";
+        res.render("error", { title: title });
+      }
       // console.log(result);
       res.render("album", { title: title, result: result });
     }
@@ -119,5 +136,10 @@ app.get("/albums/:id", async (req, res) => {
 });
 
 app.get("*", (req, res) => {
-  res.render("404", { title: "404" });
+  var title = "404 Page Not Found";
+  res.render("404", { title: title });
+});
+
+app.listen(process.env.PORT || 3000, () => {
+  console.log(`LISTENING ON PORT ${process.env.PORT || 3000}`);
 });
